@@ -5,7 +5,15 @@
   "projects": {
     "client": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "skipTests": false,
+          "path": "src"
+        },
+        "@schematics/angular:service": {
+          "path": "src/core/services"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -51,7 +59,7 @@
         },
         "serve": {
           "options": {
-            "ssl": true,
+            "ssl": false,
             "sslCert": "./ssl/localhost.pem",
             "sslKey": "./ssl/localhost-key.pem"
           },
