@@ -12,10 +12,10 @@ export class AccountService {
 
   baseUrl = 'http://localhost:5285/api/';
 
-  register(creds: RegisterCreds){
+  register(creds: RegisterCreds) {
     return this.http.post<User>(`${this.baseUrl}account/register`, creds).pipe(
       tap(user => {
-        if(user){
+        if (user) {
           this.setCurrentUser(user)
         }
       })
@@ -25,14 +25,14 @@ export class AccountService {
   login(creds: any) {
     return this.http.post<User>(`${this.baseUrl}account/login`, creds).pipe(
       tap(user => {
-        if(user){
+        if (user) {
           this.setCurrentUser(user)
         }
       })
     )
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem('user');
     this.currentUser.set(null)
   }
@@ -41,7 +41,7 @@ export class AccountService {
   // Metodi DRY
   //------------------------
 
-  setCurrentUser(user: User){
+  setCurrentUser(user: User) {
     localStorage.setItem('user', JSON.stringify(user))
     this.currentUser.set(user)
   }
